@@ -2,7 +2,7 @@
   "name": "YouTutu",
   "short_name": "YouTutu",
   "description": "Convert YouTube videos into self-contained HTML reference documents",
-  "start_url": "/",
+  "start_url": "/YouTutu-Web-App/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
