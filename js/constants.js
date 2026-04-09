@@ -1,7 +1,7 @@
 // YouTutu PWA — All hardcoded configuration
 // To change a value, edit this file. No settings panel.
 
-export const PROXY_URL = 'https://yoututu-proxy.YOUR_WORKER.workers.dev';
+export const PROXY_URL = 'https://yoututu-proxy.kirk-420.workers.dev';
 
 // AI Model
 export const AI_MODEL = 'onnx-community/gemma-4-E2B-it-ONNX';
