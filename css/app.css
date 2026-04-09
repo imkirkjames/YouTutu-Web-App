@@ -1,0 +1,340 @@
+/* YouTutu PWA — Styles */
+/* Mobile-first, system dark/light via prefers-color-scheme */
+
+:root {
+  --color-bg: #ffffff;
+  --color-surface: #f5f5f7;
+  --color-text: #1d1d1f;
+  --color-text-secondary: #6e6e73;
+  --color-accent: #e94560;
+  --color-accent-hover: #d63851;
+  --color-border: #d2d2d7;
+  --color-success: #34c759;
+  --color-error: #ff3b30;
+  --color-active: #007aff;
+  --radius: 12px;
+  --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #1a1a2e;
+    --color-surface: #16213e;
+    --color-text: #e8e8ed;
+    --color-text-secondary: #98989d;
+    --color-accent: #e94560;
+    --color-accent-hover: #f05a73;
+    --color-border: #38384a;
+    --color-success: #30d158;
+    --color-error: #ff453a;
+    --color-active: #0a84ff;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Header */
+.app-header {
+  text-align: center;
+  padding: 2rem 1rem 1rem;
+}
+
+.app-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: -0.02em;
+}
+
+.app-subtitle {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  margin-top: 0.25rem;
+}
+
+/* Main */
+main {
+  flex: 1;
+  padding: 0 1rem 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Views */
+.view {
+  display: none;
+}
+
+.view.active {
+  display: block;
+}
+
+/* Input View */
+.input-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.input-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.url-input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  font-size: 1rem;
+  font-family: var(--font);
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.url-input:focus {
+  border-color: var(--color-accent);
+}
+
+.url-input::placeholder {
+  color: var(--color-text-secondary);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: var(--font);
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.2s, opacity 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:active {
+  opacity: 0.8;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--color-accent-hover);
+}
+
+.btn-secondary {
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-accent);
+}
+
+/* Processing View */
+.processing-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.processing-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.progress-steps {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  border-left: 2px solid var(--color-border);
+  margin-left: 0.625rem;
+  padding-left: 1.25rem;
+  position: relative;
+  color: var(--color-text-secondary);
+  transition: color 0.3s;
+}
+
+.step:first-child {
+  padding-top: 0;
+}
+
+.step:last-child {
+  padding-bottom: 0;
+  border-left-color: transparent;
+}
+
+.step-icon {
+  position: absolute;
+  left: -0.5625rem;
+  width: 1.125rem;
+  height: 1.125rem;
+  border-radius: 50%;
+  background: var(--color-border);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.625rem;
+  transition: background 0.3s;
+}
+
+.step-icon::after {
+  content: '';
+}
+
+.step.active {
+  color: var(--color-text);
+}
+
+.step.active .step-icon {
+  background: var(--color-active);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-active) 25%, transparent);
+}
+
+.step.active .step-icon::after {
+  content: '';
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 50%;
+  background: #fff;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+.step.done {
+  color: var(--color-text);
+}
+
+.step.done .step-icon {
+  background: var(--color-success);
+}
+
+.step.done .step-icon::after {
+  content: '\2713';
+  color: #fff;
+  font-weight: 700;
+}
+
+.step.error {
+  color: var(--color-error);
+}
+
+.step.error .step-icon {
+  background: var(--color-error);
+}
+
+.step.error .step-icon::after {
+  content: '\2717';
+  color: #fff;
+  font-weight: 700;
+}
+
+.step-label {
+  font-size: 0.9375rem;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* Result View */
+.result-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.result-preview {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #fff;
+}
+
+.result-preview iframe {
+  width: 100%;
+  height: 50vh;
+  border: none;
+  display: block;
+}
+
+.result-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.result-actions .btn:last-child {
+  grid-column: 1 / -1;
+}
+
+/* Error message */
+.error-message {
+  background: color-mix(in srgb, var(--color-error) 10%, transparent);
+  color: var(--color-error);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+/* Utility */
+.hidden {
+  display: none !important;
+}
